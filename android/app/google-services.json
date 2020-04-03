@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "632241626555",
+    "firebase_url": "https://prune-mobile-application.firebaseio.com",
+    "project_id": "prune-mobile-application",
+    "storage_bucket": "prune-mobile-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632241626555:android:b3a12bd41750943fbff89e",
+        "android_client_info": {
+          "package_name": "com.drakenetworks.prune_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "632241626555-dubrjpct6mtp9b9ih1iv7g36b52ikgfj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk50Mi2sKFlDqV70_Exf9B2kTDJfJy8_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "632241626555-dubrjpct6mtp9b9ih1iv7g36b52ikgfj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
