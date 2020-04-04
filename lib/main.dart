@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primaryColor: Color(0xffE91403)
         ),
-        title: 'Fujiyama',
+        title: 'Prune',
         debugShowCheckedModeBanner: false,
         home: Wrapper(),
       ),
