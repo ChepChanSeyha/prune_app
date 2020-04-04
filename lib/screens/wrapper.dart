@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prune_app/models/user.dart';
+import 'package:prune_app/screens/profile/profile.dart';
 
 import 'authenticate/authenticate.dart';
 import 'home/home.dart';
@@ -14,7 +15,7 @@ class Wrapper extends StatelessWidget {
     if(user == null) {
       return Authenticate();
     } else {
-      return Home();
+      return Profile();
     }
 
   }

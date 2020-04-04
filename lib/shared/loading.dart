@@ -13,7 +13,7 @@ class _LoadingState extends State<Loading> {
       color: Colors.white,
       child: Center(
         child: SpinKitChasingDots(
-          color: Color(0xffE91403),
+          color: Color(0xff5BBDF4),
           size: 50.0,
         ),
       ),
