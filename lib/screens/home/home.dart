@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prune_app/services/auth.dart';
+import 'package:prune_app/screens/home/viewlist.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,28 +8,78 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-        actions: <Widget>[
-          FlatButton.icon(
-              onPressed: () async {
-                await _auth.signOut();
-              },
-              icon: Icon(
-                Icons.person,
-                color: Colors.white,
+    return CupertinoScrollbar(
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(top:50, bottom: 100),
+              child: GestureDetector(
+                onTap: (){
+                  print("Clicked");
+                },
+                child: Center(
+                  child: Text("Learning Subjects",
+                    style: TextStyle(
+                        color: Colors.lightBlue,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25
+                    ),
+                  ),
+                ),
               ),
-              label: Text(
-                'Logout',
-                style: TextStyle(color: Colors.white),
-              ))
-        ],
+            ),
+            SizedBox(height: 25),
+            CustomTextField("Math",context),
+            SizedBox(height: 25),
+            CustomTextField("English",context),
+            SizedBox(height: 25),
+            CustomTextField('Geography',context),
+            SizedBox(height: 25),
+            CustomTextField('Khmer',context),
+          ],
+        ),
       ),
     );
   }
+}
+Widget CustomTextField(text, BuildContext context) {
+  return GestureDetector(
+    onTap: (){
+      Navigator.push(
+          context,
+          CupertinoPageRoute(builder: (context) => ViewlistScreen()
+          )
+      );
+    },
+    child: Container(
+      height: MediaQuery.of(context).size.height/11,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: CupertinoTextField(
+          onTap: (){
+            print("Clicked");
+          },
+          enabled: false,
+//          focusNode: FocusNod,
+          placeholder: text,
+          placeholderStyle: TextStyle(
+              color: Colors.lightBlue
+          ),
+          style: TextStyle(
+            color: Colors.lightBlue,
+          ),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.lightBlue,
+              width: 2,
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }
