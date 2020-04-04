@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:prune_app/screens/home/splashscreen.dart';
 import 'package:prune_app/screens/wrapper.dart';
 import 'models/user.dart';
 import 'services/auth.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Prune',
         debugShowCheckedModeBanner: false,
-        home: Wrapper(),
+        home: MySplashScreen(),
       ),
     );
   }
