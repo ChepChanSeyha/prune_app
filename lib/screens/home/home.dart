@@ -10,8 +10,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return CupertinoScrollbar(
-      child: Container(
+    return Scaffold(
+      body: Container(
         child: Column(
           children: <Widget>[
             Padding(
@@ -50,7 +50,7 @@ Widget CustomTextField(text, BuildContext context) {
     onTap: (){
       Navigator.push(
           context,
-          CupertinoPageRoute(builder: (context) => ViewlistScreen()
+          CupertinoPageRoute(builder: (context) => ViewListScreen()
           )
       );
     },

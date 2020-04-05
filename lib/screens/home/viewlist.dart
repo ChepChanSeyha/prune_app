@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class ViewlistScreen extends StatefulWidget {
+class ViewListScreen extends StatefulWidget {
   @override
-  _ViewlistScreenState createState() => _ViewlistScreenState();
+  _ViewListScreenState createState() => _ViewListScreenState();
 }
 
-class _ViewlistScreenState extends State<ViewlistScreen> {
+class _ViewListScreenState extends State<ViewListScreen> {
   YoutubePlayerController _controller;
   @override
   void initState(){

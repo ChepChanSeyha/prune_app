@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prune_app/screens/home/splashscreen.dart';
-import 'package:prune_app/screens/wrapper.dart';
 import 'models/user.dart';
 import 'services/auth.dart';
 
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         theme: ThemeData(
-            primaryColor: Color(0xffE91403)
+            primaryColor: Color(0xff5BBDF4)
         ),
         title: 'Prune',
         debugShowCheckedModeBanner: false,

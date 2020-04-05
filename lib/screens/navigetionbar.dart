@@ -1,36 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prune_app/screens/shared/my_flutter_app_icons.dart' as customIcons;
+import 'package:prune_app/shared/my_flutter_app_icons.dart' as customIcons;
 import 'home/explore.dart';
 import 'home/home.dart';
 import 'home/notification.dart';
 import 'home/profile.dart';
 import 'home/setting.dart';
 
-class NavigetionTabBar extends StatefulWidget {
+class NavigationTabBar extends StatefulWidget {
   @override
-  _NavigetionTabBarState createState() => _NavigetionTabBarState();
+  _NavigationTabBarState createState() => _NavigationTabBarState();
 }
 
-class _NavigetionTabBarState extends State<NavigetionTabBar> {
+class _NavigationTabBarState extends State<NavigationTabBar> {
 
   List<Widget> myPage=[
       Home(),
       NotificationScreen(),
       ExploreScreen(),
-      ProfileScreen(),
+      Profile(),
       SettingScreen()
   ];
 
-  Widget changeTitle( int index){
-    switch (index){
-      case 0: return Text("Feed");
-      case 1: return Text("Notification");
-      case 2: return Text("Explore");
-      case 3: return Text("Profile");
-      case 4: return Text("Setting");
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -86,7 +86,7 @@ class _SignInState extends State<SignIn> {
                       height: 20.0,
                     ),
                     RaisedButton(
-                      color: Color(0xffE91403),
+                      color: Color(0xff5BBDF4),
                       child: Text(
                         'Sign In',
                         style: TextStyle(color: Colors.white),
@@ -120,7 +120,7 @@ class _SignInState extends State<SignIn> {
                             children: <Widget>[
                               Text('Sign Up',
                                   style: TextStyle(
-                                    color: Color(0xffE91403),
+                                    color: Color(0xff5BBDF4),
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.underline,
