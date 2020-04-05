@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/macbookpro/year5/PruneApp/prune_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
+            "outputFile": "/Users/macbookpro/year5/PruneApp/prune_app/mobile_app/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
             "map": [
                 {
                     "source": "/Users/macbookpro/.gradle/caches/transforms-2/files-2.1/2521ddfd882e90988a6822388afd3dc7/jetified-play-services-basement-17.0.0/res/values-ne/values.xml",
