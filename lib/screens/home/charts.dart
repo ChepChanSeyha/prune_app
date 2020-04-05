@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class PieOutsideLabelChart extends StatelessWidget {
+class DatumLegendWithMeasures extends StatelessWidget {
   final List<charts.Series> seriesList;
   final bool animate;
 
-  PieOutsideLabelChart(this.seriesList, {this.animate});
+  DatumLegendWithMeasures(this.seriesList, {this.animate});
 
-  /// Creates a [PieChart] with sample data and no transition.
-  factory PieOutsideLabelChart.withSampleData() {
-    return new PieOutsideLabelChart(
+  factory DatumLegendWithMeasures.withSampleData() {
+    return new DatumLegendWithMeasures(
       _createSampleData(),
       // Disable animations for image tests.
       animate: false,
@@ -19,40 +18,49 @@ class PieOutsideLabelChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new charts.PieChart(seriesList,
-        animate: animate,
-        defaultRenderer: new charts.ArcRendererConfig(arcRendererDecorators: [
-          new charts.ArcLabelDecorator(
-              labelPosition: charts.ArcLabelPosition.outside)
-        ]));
+    return new charts.PieChart(
+      seriesList,
+      animate: animate,
+      behaviors: [
+        new charts.DatumLegend(
+          position: charts.BehaviorPosition.start,
+          horizontalFirst: false,
+          cellPadding: new EdgeInsets.only(bottom: 10.0),
+          showMeasures: true,
+          legendDefaultMeasure: charts.LegendDefaultMeasure.firstValue,
+          measureFormatter: (num value) {
+            return value == null ? '-' : '$value%';
+          },
+        ),
+      ],
+    );
   }
 
-  /// Create one series with sample hard coded data.
-  static List<charts.Series<LinearSales, int>> _createSampleData() {
+  static List<charts.Series<LearningHistory, String>> _createSampleData() {
     final data = [
-      new LinearSales(0, 100),
-      new LinearSales(1, 75),
-      new LinearSales(2, 25),
-      new LinearSales(3, 5),
+      new LearningHistory('Math', 23),
+      new LearningHistory('Japanese', 18),
+      new LearningHistory('English', 9),
+      new LearningHistory('Geography', 15),
+      new LearningHistory('Science', 5),
+      new LearningHistory('OTHER', 30),
     ];
 
     return [
-      new charts.Series<LinearSales, int>(
-        id: 'Sales',
-        domainFn: (LinearSales sales, _) => sales.year,
-        measureFn: (LinearSales sales, _) => sales.sales,
+      new charts.Series<LearningHistory, String>(
+        id: 'LearningHistory',
+        domainFn: (LearningHistory subjects, _) => subjects.subjects,
+        measureFn: (LearningHistory percentages, _) => percentages.percentages,
         data: data,
-        // Set a label accessor to control the text of the arc label.
-        labelAccessorFn: (LinearSales row, _) => '${row.year}: ${row.sales}',
       )
     ];
   }
 }
 
 /// Sample linear data type.
-class LinearSales {
-  final int year;
-  final int sales;
+class LearningHistory {
+  final String subjects;
+  final int percentages;
 
-  LinearSales(this.year, this.sales);
+  LearningHistory(this.subjects, this.percentages);
 }

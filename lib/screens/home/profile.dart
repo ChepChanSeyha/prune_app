@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:prune_app/shared/loading.dart';
-import 'package:prune_app/shared/widgets.dart';
+
+import 'charts.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -17,6 +18,9 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+
+    var dpc = DatumLegendWithMeasures.withSampleData();
+
     return loading ? Loading() : Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -68,91 +72,70 @@ class _ProfileState extends State<Profile> {
           ],
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.width/2.5,
-            child: Image.asset('assets/images/image.png', fit: BoxFit.fitHeight, alignment: Alignment.center),
-          ),
-          Container(
-            color: Colors.blue[100],
-            width: MediaQuery.of(context).size.width * 1,
-            height: MediaQuery.of(context).size.width/3,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Makara Dae', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
-                    Text('Phnom Penh, Cambodia'),
-                  ],
-                ),
-                ButtonTheme(
-                  height: 50.0,
-                  minWidth: 100.0,
-                  child: RaisedButton(
-                    child: Text('EDIT'),
-                    onPressed: () {},
-                    textColor: Colors.white,
-                    color: Color(0xff5BBDF4),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10),
-            child: Container(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Container(
               width: MediaQuery.of(context).size.width * 1,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Text('Learning history', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+              height: MediaQuery.of(context).size.width/2.5,
+              child: Image.asset('assets/images/image.png', fit: BoxFit.fitHeight, alignment: Alignment.center),
+            ),
+            Container(
+              color: Colors.blue[100],
+              width: MediaQuery.of(context).size.width * 1,
+              height: MediaQuery.of(context).size.width/3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Makara Dae', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                      Text('Phnom Penh, Cambodia'),
+                    ],
+                  ),
+                  ButtonTheme(
+                    height: 50.0,
+                    minWidth: 100.0,
+                    child: RaisedButton(
+                      child: Text('EDIT'),
+                      onPressed: () {},
+                      textColor: Colors.white,
+                      color: Color(0xff5BBDF4),
                     ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            subject('Math'),
-                            SizedBox(height: 10,),
-                            subject('Japanese'),
-                            SizedBox(height: 10,),
-                            subject('English'),
-                            SizedBox(height: 10,),
-                            subject('Geography'),
-                            SizedBox(height: 10,),
-                            subject('Science'),
-                            SizedBox(height: 10,),
-                            subject('OTHER'),
-                          ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, bottom: 10),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 1,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: Text('Learning history', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                      ),
+                      Center(
+                        child: Container(
+                          //color: Colors.blue,
+                          height: 350.0,
+                          width: 350.0,
+                          child: dpc,
                         ),
-                        Container(
-                          width: 150,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xff5BBDF4),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
