@@ -33,8 +33,8 @@ class _NavigetionTabBarState extends State<NavigetionTabBar> {
   }
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: CupertinoTabScaffold(
+    return Scaffold(
+      body: CupertinoTabScaffold(
         tabBuilder: (BuildContext context, currentIndex){
           return CupertinoTabView(
             builder: (context){

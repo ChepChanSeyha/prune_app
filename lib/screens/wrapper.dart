@@ -12,7 +12,7 @@ class Wrapper extends StatelessWidget {
     
     final user = Provider.of<User>(context);
     
-    if(user != null) {
+    if(user == null) {
       return Authenticate();
     } else {
       return NavigetionTabBar();
