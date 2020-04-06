@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:prune_app/models/user.dart';
 
+import '../models/user.dart';
 import 'authenticate/authenticate.dart';
 import 'navigetionbar.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prune_app/screens/home/viewlist.dart';
+
+import 'viewlist.dart';
 
 class Home extends StatefulWidget {
   @override
