@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:prune_app/shared/my_flutter_app_icons.dart' as customIcons;
+import '../shared/my_flutter_app_icons.dart' as customIcons;
 import 'home/explore.dart';
 import 'home/home.dart';
 import 'home/notification.dart';
