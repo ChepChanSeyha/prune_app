@@ -90,19 +90,10 @@ class _ViewScreenState extends State<ViewScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: GestureDetector(
-                    onTap: (){
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(builder: (context) => ViewScreen()
-                          )
-                      );
-                    },
-                    child: Text("TEST",style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.lightBlue
-                    ),
-                    ),
+                  child: Text("TEST",style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.lightBlue
+                  ),
                   ),
                 )
               ],
