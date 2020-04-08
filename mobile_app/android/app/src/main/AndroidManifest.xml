@@ -9,6 +9,7 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="prune_app"
         android:icon="@mipmap/ic_launcher">
+        android:name="android.support.multidex.MultiDexApplication" >
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

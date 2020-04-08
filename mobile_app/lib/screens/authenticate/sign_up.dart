@@ -1,19 +1,58 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:prune_app/screens/home/home.dart';
+import 'package:prune_app/screens/home/profile.dart';
 
 import '../../services/auth.dart';
 import '../../shared/loading.dart';
 
 class SignUp extends StatefulWidget {
+
   final Function toggleView;
-  SignUp({this.toggleView});
+  SignUp({Key key, this.toggleView}) : super(key: key);
 
   @override
   _SignUpState createState() => _SignUpState();
 }
 
 class _SignUpState extends State<SignUp> {
-  final AuthService _auth = AuthService();
-  final _formKey = GlobalKey<FormState>();
+
+  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+  TextEditingController firstNameInputController;
+  TextEditingController lastNameInputController;
+  TextEditingController emailInputController;
+  TextEditingController pwdInputController;
+  TextEditingController confirmPwdInputController;
+
+  @override
+  initState() {
+    firstNameInputController = new TextEditingController();
+    lastNameInputController = new TextEditingController();
+    emailInputController = new TextEditingController();
+    pwdInputController = new TextEditingController();
+    confirmPwdInputController = new TextEditingController();
+    super.initState();
+  }
+
+  String emailValidator(String value) {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    if (!regex.hasMatch(value)) {
+      return 'Email format is invalid';
+    } else {
+      return null;
+    }
+  }
+
+  String pwdValidator(String value) {
+    if (value.length < 8) {
+      return 'Password must be longer than 8 characters';
+    } else {
+      return null;
+    }
+  }
 
   // Text field state
   String email = '';
@@ -27,12 +66,11 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return loading ? Loading() : Scaffold(
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Container(
-            padding: EdgeInsets.symmetric(vertical: 70.0, horizontal: 30.0),
-            child: Form(
-                key: _formKey,
+      body: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: SingleChildScrollView(
+              child: Form(
+                key: _registerFormKey,
                 child: Column(
                   children: <Widget>[
                     Image.asset(
@@ -40,24 +78,30 @@ class _SignUpState extends State<SignUp> {
                       height: MediaQuery.of(context).size.width * 0.5,
                       width: MediaQuery.of(context).size.width * 0.5,
                     ),
-                    SizedBox(
-                      height: 50.0,
-                    ),
                     TextFormField(
-                      validator: (val) => val.isEmpty ? 'Enter your email' : null,
                       decoration: InputDecoration(
-                          hintText: 'Email', icon: Icon(Icons.email)),
-                      onChanged: (val) {
-                        setState(() => email = val);
-                      },
-                    ),
-                    SizedBox(
-                      height: 20.0,
+                          labelText: 'First Name*', hintText: "John", icon: Icon(Icons.perm_identity)),
+                      controller: firstNameInputController,
+                      validator: (value) => value.length < 3
+                          ? "Please enter a valid first name."
+                          : null,
                     ),
                     TextFormField(
-                      validator: (val) => val.length < 6
-                          ? 'Password must more than 6 characters'
+                      decoration: InputDecoration(
+                          labelText: 'Last Name*', hintText: "Doe", icon: Icon(Icons.perm_identity)),
+                      controller: lastNameInputController,
+                      validator: (value) => value.length < 3
+                          ? "Please enter a valid last name."
                           : null,
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                          labelText: 'Email*', hintText: "john.doe@gmail.com", icon: Icon(Icons.email)),
+                      controller: emailInputController,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: emailValidator,
+                    ),
+                    TextFormField(
                       decoration: InputDecoration(
                           suffixIcon: GestureDetector(
                             onTap: () {
@@ -70,56 +114,79 @@ class _SignUpState extends State<SignUp> {
                               semanticLabel:
                               _obscureText ? 'show password' : 'hide password',
                             ),
-                          ),
-                          hintText: 'Password',
-                          icon: Icon(Icons.vpn_key)),
+                          ), labelText: 'Password*', hintText: "********", icon: Icon(Icons.vpn_key)),
+                      controller: pwdInputController,
                       obscureText: _obscureText,
-                      onChanged: (val) {
-                        setState(() => password = val);
-                      },
-                    ),
-                    SizedBox(
-                      height: 20.0,
+                      validator: pwdValidator,
                     ),
                     TextFormField(
-                      validator: (val) => val.isEmpty ? 'Enter your phone number' : null,
                       decoration: InputDecoration(
-                          hintText: 'Phone number', icon: Icon(Icons.phone)),
-                      onChanged: (val) {
-                        setState(() => telephone = val);
-                      },
-                    ),
-                    SizedBox(
-                      height: 20.0,
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            child: Icon(
+                              _obscureText ? Icons.visibility_off : Icons.visibility,
+                              semanticLabel:
+                              _obscureText ? 'show password' : 'hide password',
+                            ),
+                          ), labelText: 'Confirm Password*', hintText: "********", icon: Icon(Icons.vpn_key)),
+                      controller: confirmPwdInputController,
+                      obscureText: true,
+                      validator: pwdValidator,
                     ),
                     RaisedButton(
-                      color: Color(0xffE91403),
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          setState(() => loading = true);
-                          dynamic result = await _auth.signUpWithEmailAndPassword(
-                              email, password);
-                          if (result == null) {
-                            setState(() {
-                              error = 'Something went wrong';
-                              loading = false;
-                            });
+                      child: Text("Register"),
+                      color: Theme.of(context).primaryColor,
+                      textColor: Colors.white,
+                      onPressed: () {
+                        if (_registerFormKey.currentState.validate()) {
+                          if (pwdInputController.text ==
+                              confirmPwdInputController.text) {
+                            FirebaseAuth.instance
+                                .createUserWithEmailAndPassword(
+                                email: emailInputController.text,
+                                password: pwdInputController.text)
+                                .then((currentUser) => Firestore.instance
+                                .collection("users")
+                                .document(currentUser.user.uid)
+                                .setData({
+                              "uid": currentUser.user.uid,
+                              "fname": firstNameInputController.text,
+                              "surname": lastNameInputController.text,
+                              "email": emailInputController.text,
+                            }).then((result) => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>
+                                Profile()), (_) => false),))
+                                .catchError((err) => print(err))
+                                .catchError((err) => print(err));
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text("Error"),
+                                    content: Text("The passwords do not match"),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text("Close"),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      )
+                                    ],
+                                  );
+                                });
                           }
                         }
                       },
-                    ),
-                    SizedBox(
-                      height: 50.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'Already have an account? ',
+                          'Already haved an account? ',
                           style: TextStyle(color: Colors.grey[800]),
                         ),
                         GestureDetector(
@@ -127,7 +194,7 @@ class _SignUpState extends State<SignUp> {
                             children: <Widget>[
                               Text('Sign In',
                                   style: TextStyle(
-                                    color: Color(0xffE91403),
+                                    color: Color(0xff5BBDF4),
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                     decoration: TextDecoration.underline,
@@ -139,10 +206,10 @@ class _SignUpState extends State<SignUp> {
                           },
                         )
                       ],
-                    ),
+                    )
                   ],
-                ))),
-      ),
+                ),
+              ))),
     );
   }
 }

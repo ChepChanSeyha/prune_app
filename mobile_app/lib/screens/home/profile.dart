@@ -6,6 +6,7 @@ import '../../shared/loading.dart';
 import 'charts.dart';
 
 class Profile extends StatefulWidget {
+
   @override
   _ProfileState createState() => _ProfileState();
 }
@@ -91,7 +92,7 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Makara Dae', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                      Text('Chep Chanseyha', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
                       Text('Phnom Penh, Cambodia'),
                     ],
                   ),
