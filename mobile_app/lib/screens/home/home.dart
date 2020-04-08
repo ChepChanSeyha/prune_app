@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'viewlist.dart';
 
 class Home extends StatefulWidget {
@@ -13,40 +13,42 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+
+        width: MediaQuery.of(context).size.width*1,
         child: Column(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(top:50, bottom: 100),
-              child: GestureDetector(
-                onTap: (){
-                  print("Clicked");
-                },
-                child: Center(
-                  child: Text("Learning Subjects",
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25
-                    ),
+              child: Center(
+                child: Text("Learning Subjects",
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25
                   ),
                 ),
               ),
             ),
-            SizedBox(height: 25),
-            CustomTextField("Math",context),
-            SizedBox(height: 25),
-            CustomTextField("English",context),
-            SizedBox(height: 25),
-            CustomTextField('Geography',context),
-            SizedBox(height: 25),
-            CustomTextField('Khmer',context),
+            StreamBuilder(
+              stream: Firestore.instance.collection('categories').snapshots(),
+              builder: (context, snapshot){
+                if (!snapshot.hasData) return const Text("Loading...");
+                return ListView.builder(
+//                    itemExtent: 80,
+                    shrinkWrap: true,
+                    itemCount: snapshot.data.documents.length,
+                    itemBuilder: (context, index)=>
+                        _CustomTextField(context, snapshot.data.documents[index]),
+                );
+              },
+            ),
           ],
         ),
       ),
     );
   }
 }
-Widget CustomTextField(text, BuildContext context) {
+Widget _CustomTextField(BuildContext context, DocumentSnapshot document) {
   return GestureDetector(
     onTap: (){
       Navigator.push(
@@ -55,32 +57,38 @@ Widget CustomTextField(text, BuildContext context) {
           )
       );
     },
-    child: Container(
-      height: MediaQuery.of(context).size.height/11,
-      color: Colors.white,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        child: CupertinoTextField(
-          onTap: (){
-            print("Clicked");
-          },
-          enabled: false,
+    child: Column(
+      children: <Widget>[
+        Container(
+          height: MediaQuery.of(context).size.height/11,
+          color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: CupertinoTextField(
+              onTap: (){
+                print("Clicked");
+              },
+              enabled: false,
 //          focusNode: FocusNod,
-          placeholder: text,
-          placeholderStyle: TextStyle(
-            color: Colors.red,
-          ),
-          style: TextStyle(
-            color: Colors.red,
-          ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.red,
-              width: 2,
+              placeholder: document['name'],
+              placeholderStyle: TextStyle(
+                color: Colors.red,
+              ),
+              style: TextStyle(
+                color: Colors.red,
+              ),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.red,
+                  width: 2,
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        SizedBox(height: 20,)
+      ],
     ),
+
   );
 }
