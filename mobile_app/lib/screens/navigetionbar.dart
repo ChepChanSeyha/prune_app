@@ -41,7 +41,7 @@ class _NavigationTabBarState extends State<NavigationTabBar> {
           inactiveColor: Colors.grey[400],
           items: [
             BottomNavigationBarItem(
-//              icon:const Icon(customIcons.MyFlutterApp.view_quilt, size: 25,),
+//              icon:const Icon(customIcons.MyFlutterApp.asset_1, size: 25, color: Colors.white,),
               icon:const Icon(Icons.home, size: 30),
 //                title: Text('Feed')
             ),
