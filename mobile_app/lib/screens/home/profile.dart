@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,7 +93,13 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Chep Chanseyha', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),),
+                      StreamBuilder(
+                        stream: Firestore.instance.collection('users').snapshots(),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) return Text('Loading ... ');
+                          return Text(snapshot.data.documents[0]['surname'].toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),);
+                        },
+                      ),
                       Text('Phnom Penh, Cambodia'),
                     ],
                   ),
