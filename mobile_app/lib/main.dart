@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
         theme: ThemeData(
-            primaryColor: Color(0xff5BBDF4)
+            primaryColor: Colors.red
         ),
         title: 'Prune',
         debugShowCheckedModeBanner: false,

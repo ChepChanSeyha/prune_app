@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:prune_app/screens/home/view.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ViewListScreen extends StatefulWidget {
@@ -33,16 +34,16 @@ class _ViewListScreenState extends State<ViewListScreen> {
       child: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          ItemListView(_controller),
+          ItemListView(_controller, context),
           SizedBox(height:20 ,),
-          ItemListView(_controller),
-          ItemListView(_controller),
+          ItemListView(_controller,context),
+          ItemListView(_controller,context),
         ],
       ),
     );
   }
 }
-Widget ItemListView (_controller) {
+Widget ItemListView (_controller, BuildContext context) {
   return Container(
     child: Column(
       children: <Widget>[
@@ -59,21 +60,33 @@ Widget ItemListView (_controller) {
             Row(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Icon(Icons.account_circle, size: 50,),
+                  padding: const EdgeInsets.only(left: 20, top: 20, bottom: 20),
+                  child: Icon(Icons.account_circle, size: 60, color: Colors.lightBlue,),
                 ),
-                Text("Teacher A"),
+                Text("Teacher A",style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Colors.lightBlue
+                ),),
               ],
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text("1h ago"),
+              child: Text("1h ago", style: TextStyle(
+                  color: Colors.lightBlue,
+                  fontSize: 16
+              ),),
             )
           ],
         ),
         Padding(
           padding: const EdgeInsets.only(left: 20, right: 15),
-          child: Text("This is the vedio of the teacher ""A that is the most powerful teacher that i never know"),
+          child: Text("This is the vedio of the teacher ""A that is the most powerful teacher that i never know",
+            style: TextStyle(
+                color: Colors.lightBlue,
+                fontSize: 16
+            ),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,15 +94,41 @@ Widget ItemListView (_controller) {
             Row(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Icon(Icons.favorite,),
+                  padding: const EdgeInsets.only(left: 15, bottom: 15, top: 15),
+                  child: Icon(Icons.favorite,color: Colors.lightBlue,),
                 ),
-                Text("1k"),
+                Text("1k" ,style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightBlue,
+                ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, bottom: 15, top: 15),
+                  child: Icon(Icons.indeterminate_check_box,color: Colors.lightBlue,),
+                ),
+                Text("250" ,style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightBlue,
+                ),
+                ),
               ],
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Text("TEST"),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(builder: (context) => ViewScreen()
+                      )
+                  );
+                },
+                child: Text("TEST",style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.lightBlue,
+                ),
+                ),
+              ),
             )
           ],
         ),

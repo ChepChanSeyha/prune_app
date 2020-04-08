@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
                 child: Center(
                   child: Text("Learning Subjects",
                     style: TextStyle(
-                        color: Colors.lightBlue,
+                        color: Colors.red,
                         fontWeight: FontWeight.bold,
                         fontSize: 25
                     ),
@@ -68,14 +68,14 @@ Widget CustomTextField(text, BuildContext context) {
 //          focusNode: FocusNod,
           placeholder: text,
           placeholderStyle: TextStyle(
-              color: Colors.lightBlue
+            color: Colors.red,
           ),
           style: TextStyle(
-            color: Colors.lightBlue,
+            color: Colors.red,
           ),
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.lightBlue,
+              color: Colors.red,
               width: 2,
             ),
           ),

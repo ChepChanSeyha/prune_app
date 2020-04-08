@@ -17,7 +17,6 @@ class _NavigationTabBarState extends State<NavigationTabBar> {
   List<Widget> myPage=[
       Home(),
       NotificationScreen(),
-      ExploreScreen(),
       Profile(),
       SettingScreen()
   ];
@@ -37,29 +36,29 @@ class _NavigationTabBarState extends State<NavigationTabBar> {
         },
         tabBar: CupertinoTabBar(
 //          backgroundColor: CupertinoColors.activeBlue,
-          backgroundColor: Colors.lightBlue,
+          backgroundColor: Colors.red,
           activeColor: CupertinoColors.white,
           inactiveColor: Colors.grey[400],
           items: [
             BottomNavigationBarItem(
-              icon:const Icon(customIcons.MyFlutterApp.view_quilt, size: 25,),
+//              icon:const Icon(customIcons.MyFlutterApp.view_quilt, size: 25,),
+              icon:const Icon(Icons.home, size: 30),
 //                title: Text('Feed')
             ),
             BottomNavigationBarItem(
-              icon: const Icon(customIcons.MyFlutterApp.notifications, size: 25),
+//              icon: const Icon(customIcons.MyFlutterApp.notifications, size: 25),
+              icon:const Icon(Icons.dehaze, size: 30),
 //                title: Text('Notification')
             ),
             BottomNavigationBarItem(
-              icon:const Icon(customIcons.MyFlutterApp.explore, size: 25),
-//                title: Text('Explore')
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(customIcons.MyFlutterApp.account_circle, size: 25),
+//              icon: const Icon(customIcons.MyFlutterApp.account_circle, size: 25),
+              icon:const Icon(Icons.account_circle, size: 30),
 //                title: Text('Profile')
             ),
             BottomNavigationBarItem(
-              icon:const Icon(customIcons.MyFlutterApp.settings, size: 25),
+//              icon:const Icon(customIcons.MyFlutterApp.settings, size: 25),
 //                title: Text('Setting')
+              icon:const Icon(Icons.settings, size: 30,),
             ),
           ],
         ),
