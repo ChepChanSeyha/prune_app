@@ -30,7 +30,10 @@
         android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="prune_app" >
+<<<<<<< HEAD
         android:name="android.support.multidex.MultiDexApplication" >
+=======
+>>>>>>> master
         <activity
             android:name="com.drakenetworks.prune_app.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
