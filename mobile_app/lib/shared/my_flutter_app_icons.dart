@@ -31,4 +31,5 @@ class MyFlutterApp {
   static const IconData settings = IconData(0xe804, fontFamily: _kFontFam);
   static const IconData notifications = IconData(0xe805, fontFamily: _kFontFam);
   static const IconData account_circle = IconData(0xe806, fontFamily: _kFontFam);
+  static const IconData asset_1 = const IconData(0xe807, fontFamily: _kFontFam);
 }
