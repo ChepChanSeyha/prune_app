@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
                     shrinkWrap: true,
                     itemCount: snapshot.data.documents.length,
                     itemBuilder: (context, index)=>
-                        _CustomTextField(context, snapshot.data.documents[index]),
+                        _customTextField(context, snapshot.data.documents[index]),
                 );
               },
             ),
@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
     );
   }
 }
-Widget _CustomTextField(BuildContext context, DocumentSnapshot document) {
+Widget _customTextField(BuildContext context, DocumentSnapshot document) {
   return GestureDetector(
     onTap: (){
       Navigator.push(

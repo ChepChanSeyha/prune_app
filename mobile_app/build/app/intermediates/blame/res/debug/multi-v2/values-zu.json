@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
             "outputFile": "E:\\Project Flutter\\prune_app\\mobile_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\chepc\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\values-zu\\values.xml",
-=======
-            "outputFile": "D:\\InternYear5\\Project\\prune_app\\mobile_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\SREY_SOKHOM\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\values-zu\\values.xml",
->>>>>>> master
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -28,11 +21,7 @@
                     }
                 },
                 {
-<<<<<<< HEAD
                     "source": "C:\\Users\\chepc\\.gradle\\caches\\transforms-2\\files-2.1\\969f84e839cda4a81ba678e787a0e5bb\\jetified-play-services-basement-17.0.0\\res\\values-zu\\values.xml",
-=======
-                    "source": "C:\\Users\\SREY_SOKHOM\\.gradle\\caches\\transforms-2\\files-2.1\\92a638abaa8a9c971c6551c6fe0930f9\\jetified-play-services-basement-17.0.0\\res\\values-zu\\values.xml",
->>>>>>> master
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -49,11 +38,7 @@
                     }
                 },
                 {
-<<<<<<< HEAD
                     "source": "C:\\Users\\chepc\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\values-zu\\values-zu.xml",
-=======
-                    "source": "C:\\Users\\SREY_SOKHOM\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\values-zu\\values-zu.xml",
->>>>>>> master
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
