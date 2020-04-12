@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:prune_app/screens/home/test.dart';
 import 'package:prune_app/screens/home/view.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -36,6 +37,7 @@ class _ViewListScreenState extends State<ViewListScreen> {
         child: ListView(
           shrinkWrap: true,
           children: <Widget>[
+            ItemListView(_controller, context),
             ItemListView(_controller, context),
           ],
         ),
@@ -128,7 +130,13 @@ Widget ItemListView (_controller, BuildContext context) {
           height: 50.0,
           buttonColor: Colors.red,
           child: RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  CupertinoPageRoute(builder: (context) => TestScreen()
+                  )
+              );
+            },
             child: Text("TEST",style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:prune_app/screens/home/test.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ViewScreen extends StatefulWidget {
@@ -99,7 +100,11 @@ class _ViewScreenState extends State<ViewScreen> {
                   buttonColor: Colors.red,
                   child: RaisedButton(
                       onPressed: () {
-                      createDialog(context);
+                          Navigator.push(
+                              context,
+                              CupertinoPageRoute(builder: (context) => TestScreen()
+                              )
+                          );
                       },
                       child: Text("TEST",style: TextStyle(
                         fontWeight: FontWeight.bold,
