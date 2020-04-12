@@ -1,14 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
-import '../../services/auth.dart';
-import '../home/loading.dart';
-=======
 import 'package:prune_app/screens/home/home.dart';
-import '../../shared/loading.dart';
->>>>>>> seyha
+import 'package:prune_app/screens/home/loading.dart';
+import 'package:prune_app/services/auth.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -19,9 +14,15 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final AuthService _auth = AuthService();
   final _loginFormKey = GlobalKey<FormState>();
   TextEditingController emailInputController;
   TextEditingController pwdInputController;
+
+  // Text field state
+  String email = '';
+  String password = '';
+  String error = '';
 
   @override
   initState() {
@@ -58,6 +59,7 @@ class _SignInState extends State<SignIn> {
         ? Loading()
         : Scaffold(
             body: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
               child: Container(
                   padding:
                       EdgeInsets.symmetric(vertical: 70.0, horizontal: 30.0),
@@ -75,15 +77,19 @@ class _SignInState extends State<SignIn> {
                             height: 20.0,
                           ),
                           TextFormField(
+                            validator: (val) =>
+                                val.isEmpty ? 'Enter your email' : null,
                             decoration: InputDecoration(
-                                labelText: 'Email*',
-                                hintText: "chepchanseyha@gmail.com",
-                                icon: Icon(Icons.email)),
-                            controller: emailInputController,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: emailValidator,
+                              hintText: 'Email',
+                              icon: Icon(Icons.email),
+                            ),
+                            onChanged: (val) {
+                              setState(() => email = val);
+                            },
                           ),
                           TextFormField(
+                            validator: (val) =>
+                                val.isEmpty ? 'Enter your Password' : null,
                             decoration: InputDecoration(
                                 suffixIcon: GestureDetector(
                                   onTap: () {
@@ -100,74 +106,33 @@ class _SignInState extends State<SignIn> {
                                         : 'hide password',
                                   ),
                                 ),
-                                labelText: 'Password*',
-                                hintText: "********",
-                                icon: Icon(Icons.lock)),
-                            controller: pwdInputController,
+                                hintText: 'Password',
+                                icon: Icon(Icons.vpn_key)),
                             obscureText: _obscureText,
-                            validator: pwdValidator,
+                            onChanged: (val) {
+                              setState(() => password = val);
+                            },
                           ),
                           SizedBox(
                             height: 20.0,
                           ),
                           RaisedButton(
-                            color: Colors.red,
+                            color: Color(0xff5BBDF4),
                             child: Text(
                               'Sign In',
                               style: TextStyle(color: Colors.white),
                             ),
                             onPressed: () async {
                               if (_loginFormKey.currentState.validate()) {
-                                FirebaseAuth.instance
-                                    .signInWithEmailAndPassword(
-                                        email: emailInputController.text,
-                                        password: pwdInputController.text)
-                                    .then((currentUser) => Firestore.instance
-                                        .collection("users")
-                                        .document(currentUser.user.uid)
-                                        .get()
-                                        .then((DocumentSnapshot result) =>
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        Home())))
-                                        .catchError((err) => print(err)))
-                                    .catchError((err) => showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title: Text("Error"),
-                                            content: Text(
-                                                "That account doesn't exist. Enter a different account or get a new one."),
-                                            actions: <Widget>[
-                                              FlatButton(
-                                                child: Text("Close"),
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              )
-                                            ],
-                                          );
-                                        }));
-                              } else {
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      return AlertDialog(
-                                        title: Text("Error"),
-                                        content:
-                                            Text("Wrong Email Or Password"),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                            child: Text("Close"),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                          )
-                                        ],
-                                      );
-                                    });
+                                setState(() => loading = true);
+                                dynamic result = await _auth
+                                    .signInWithEmailAndPassword(email, password);
+                                if (result == null) {
+                                  setState(() {
+                                    error = 'Invalid email or password';
+                                    loading = false;
+                                  });
+                                }
                               }
                             },
                           ),
@@ -202,7 +167,12 @@ class _SignInState extends State<SignIn> {
                           SizedBox(
                             height: 20,
                           ),
-                          Text('Register later', style: TextStyle(color: Colors.grey, decoration: TextDecoration.underline),),
+                          Text(
+                            'Register later',
+                            style: TextStyle(
+                                color: Colors.grey,
+                                decoration: TextDecoration.underline),
+                          ),
                         ],
                       ))),
             ),
