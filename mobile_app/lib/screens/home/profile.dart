@@ -49,7 +49,7 @@ class _ProfileState extends State<Profile> {
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Color(0xff5BBDF4),
+                color: Colors.red,
               ),
               child: Text(
                 'Drawer Header',
@@ -83,7 +83,7 @@ class _ProfileState extends State<Profile> {
               child: Image.asset('assets/images/image.png', fit: BoxFit.fitHeight, alignment: Alignment.center),
             ),
             Container(
-              color: Colors.blue[100],
+              color: Colors.redAccent,
               width: MediaQuery.of(context).size.width * 1,
               height: MediaQuery.of(context).size.width/3,
               child: Row(
@@ -97,7 +97,7 @@ class _ProfileState extends State<Profile> {
                         stream: Firestore.instance.collection('users').snapshots(),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) return Text('Loading ... ');
-                          return Text(snapshot.data.documents[0]['surname'].toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),);
+                          return Text(snapshot.data.documents[0]['fullname'].toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),);
                         },
                       ),
                       Text('Phnom Penh, Cambodia'),
@@ -110,7 +110,7 @@ class _ProfileState extends State<Profile> {
                       child: Text('EDIT'),
                       onPressed: () {},
                       textColor: Colors.white,
-                      color: Color(0xff5BBDF4),
+                      color: Colors.red,
                     ),
                   ),
                 ],
