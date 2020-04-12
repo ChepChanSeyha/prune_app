@@ -1,34 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "E:\\Project Flutter\\prune_app\\mobile_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
+            "outputFile": "D:\\flutter-projectmanagement\\prune_app\\mobile_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\chepc\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\values-or\\values-or.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "20",
-                        "startColumns": "4",
-                        "startOffsets": "2883",
-                        "endColumns": "100",
-                        "endOffsets": "2979"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\chepc\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\values-or\\values.xml",
-=======
-            "outputFile": "D:\\InternYear5\\Project\\prune_app\\mobile_app\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\SREY_SOKHOM\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\values-or\\values.xml",
->>>>>>> master
+                    "source": "C:\\Users\\MENG HONG\\.gradle\\caches\\transforms-2\\files-2.1\\6eb14f512292913515d869914807ad40\\play-services-base-17.1.0\\res\\values-or\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -45,11 +21,7 @@
                     }
                 },
                 {
-<<<<<<< HEAD
-                    "source": "C:\\Users\\chepc\\.gradle\\caches\\transforms-2\\files-2.1\\969f84e839cda4a81ba678e787a0e5bb\\jetified-play-services-basement-17.0.0\\res\\values-or\\values.xml",
-=======
-                    "source": "C:\\Users\\SREY_SOKHOM\\.gradle\\caches\\transforms-2\\files-2.1\\92a638abaa8a9c971c6551c6fe0930f9\\jetified-play-services-basement-17.0.0\\res\\values-or\\values.xml",
->>>>>>> master
+                    "source": "C:\\Users\\MENG HONG\\.gradle\\caches\\transforms-2\\files-2.1\\b1edc0faa69a1357c139ff270341f391\\jetified-play-services-basement-17.0.0\\res\\values-or\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -64,11 +36,9 @@
                         "endColumns": "198",
                         "endOffsets": "1496"
                     }
-<<<<<<< HEAD
-=======
                 },
                 {
-                    "source": "C:\\Users\\SREY_SOKHOM\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\values-or\\values-or.xml",
+                    "source": "C:\\Users\\MENG HONG\\.gradle\\caches\\transforms-2\\files-2.1\\3aaf6e5219b7f981ec263df919098c6f\\core-1.1.0\\res\\values-or\\values-or.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -83,7 +53,6 @@
                         "endColumns": "100",
                         "endOffsets": "2979"
                     }
->>>>>>> master
                 }
             ]
         }

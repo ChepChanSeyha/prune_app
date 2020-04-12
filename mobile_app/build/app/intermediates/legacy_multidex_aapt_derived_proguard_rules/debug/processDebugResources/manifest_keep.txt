@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-# Referenced at E:\Project Flutter\prune_app\mobile_app\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:26
+# Referenced at D:\flutter-projectmanagement\prune_app\mobile_app\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:26
 -keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at E:\Project Flutter\prune_app\mobile_app\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:26
-=======
-# Referenced at D:\InternYear5\Project\prune_app\mobile_app\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:26
--keep class androidx.core.app.CoreComponentFactory { <init>(); }
-# Referenced at D:\InternYear5\Project\prune_app\mobile_app\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:26
->>>>>>> master
+# Referenced at D:\flutter-projectmanagement\prune_app\mobile_app\build\app\intermediates\merged_manifests\debug\AndroidManifest.xml:26
 -keep class io.flutter.app.FlutterApplication { <init>(); }
