@@ -5,7 +5,7 @@ import 'package:prune_app/screens/home/home.dart';
 import 'package:prune_app/screens/home/profile.dart';
 
 import '../../services/auth.dart';
-import '../../shared/loading.dart';
+import '../home/loading.dart';
 
 class SignUp extends StatefulWidget {
 
