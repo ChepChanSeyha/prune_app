@@ -37,7 +37,6 @@ class _ViewListScreenState extends State<ViewListScreen> {
           shrinkWrap: true,
           children: <Widget>[
             ItemListView(_controller, context),
-            ItemListView(_controller,context),
           ],
         ),
       ),
@@ -60,16 +59,9 @@ Widget ItemListView (_controller, BuildContext context) {
             width: MediaQuery.of(context).size.width*1,
             height: MediaQuery.of(context).size.height/3,
             color: Colors.red[200]
-
           ),
         ),
-//        YoutubePlayer(
-//          controller: _controller,
-//          showVideoProgressIndicator: true,
-//          onReady: () {
-//            print('Player is ready.');
-//          },
-//        ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -136,9 +128,7 @@ Widget ItemListView (_controller, BuildContext context) {
           height: 50.0,
           buttonColor: Colors.red,
           child: RaisedButton(
-            onPressed: () {
-
-            },
+            onPressed: () {},
             child: Text("TEST",style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
