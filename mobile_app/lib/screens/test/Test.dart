@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Test extends StatefulWidget {
   @override
   _TestState createState() => _TestState();
@@ -17,7 +18,7 @@ class _TestState extends State<Test> {
           SizedBox(height: 10,),
           Container(
             height: 68,
-            color: Colors.blue,
+            color: Colors.red,
             child: Center(
               child: Text('Test1',style:TextStyle(color: Colors.white) ,),
             ),
@@ -27,7 +28,7 @@ class _TestState extends State<Test> {
             height: 68,
             color: Colors.white,
             child: Center(
-              child: Text('A',style:TextStyle(color: Colors.blue)),
+              child: Text('A',style:TextStyle(color: Colors.red)),
             ),
           ),
           SizedBox(height: 10,),
@@ -35,7 +36,7 @@ class _TestState extends State<Test> {
             height: 68,
             color: Colors.white,
             child: Center(
-              child: Text('B',style:TextStyle(color: Colors.blue)),
+              child: Text('B',style:TextStyle(color: Colors.red)),
             ),
           ),
           SizedBox(height: 10,),
@@ -43,7 +44,7 @@ class _TestState extends State<Test> {
             height: 68,
             color: Colors.white,
             child: Center(
-              child: Text('C',style:TextStyle(color: Colors.blue)),
+              child: Text('C',style:TextStyle(color: Colors.red)),
             ),
           ),
 
