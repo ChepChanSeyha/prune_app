@@ -37,7 +37,7 @@ class _SignInState extends State<SignIn> {
                       child: Column(
                         children: <Widget>[
                           Image.asset(
-                            'assets/images/icon.png',
+                            'assets/images/icon2.png',
                             height: MediaQuery.of(context).size.width * 0.5,
                             width: MediaQuery.of(context).size.width * 0.5,
                             scale: 1.0,
