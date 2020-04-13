@@ -43,7 +43,7 @@ class _SignInState extends State<SignIn> {
                             scale: 1.0,
                           ),
                           SizedBox(
-                            height: 50.0,
+                            height: 20.0,
                           ),
                           TextFormField(
                             validator: (val) =>
@@ -110,7 +110,7 @@ class _SignInState extends State<SignIn> {
                             },
                           ),
                           SizedBox(
-                            height: 50.0,
+                            height: 20.0,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -122,7 +122,7 @@ class _SignInState extends State<SignIn> {
                               GestureDetector(
                                 child: Row(
                                   children: <Widget>[
-                                    Text('Sign Up',
+                                    Text('Register',
                                         style: TextStyle(
                                           color: Color(0xffE91403),
                                           fontSize: 16,
@@ -134,9 +134,32 @@ class _SignInState extends State<SignIn> {
                                 onTap: () {
                                   widget.toggleView();
                                 },
-                              )
+                              ),
                             ],
-                          )
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                _auth.signInAnon();
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    'Or  ',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                  Text(
+                                    'Register later',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                        decoration: TextDecoration.underline),
+                                  ),
+                                ],
+                              )),
                         ],
                       ))),
             ),

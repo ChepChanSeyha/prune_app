@@ -11,13 +11,15 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   // Text field state
   String email = '';
+  String fullName = '';
   String password = '';
-  String telephone = '';
+  String location = '';
   String error = '';
 
   bool _obscureText = true;
@@ -43,7 +45,7 @@ class _SignUpState extends State<SignUp> {
                             width: MediaQuery.of(context).size.width * 0.5,
                           ),
                           SizedBox(
-                            height: 50.0,
+                            height: 20.0,
                           ),
                           TextFormField(
                             validator: (val) =>
@@ -52,6 +54,18 @@ class _SignUpState extends State<SignUp> {
                                 hintText: 'Email', icon: Icon(Icons.email)),
                             onChanged: (val) {
                               setState(() => email = val);
+                            },
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          TextFormField(
+                            validator: (val) =>
+                            val.isEmpty ? 'Enter your full name' : null,
+                            decoration: InputDecoration(
+                                hintText: 'Full name', icon: Icon(Icons.account_circle)),
+                            onChanged: (val) {
+                              setState(() => fullName = val);
                             },
                           ),
                           SizedBox(
@@ -89,12 +103,12 @@ class _SignUpState extends State<SignUp> {
                           ),
                           TextFormField(
                             validator: (val) =>
-                                val.isEmpty ? 'Enter your phone number' : null,
+                                val.isEmpty ? 'Enter your location' : null,
                             decoration: InputDecoration(
-                                hintText: 'Phone number',
-                                icon: Icon(Icons.phone)),
+                                hintText: 'Location',
+                                icon: Icon(Icons.location_on)),
                             onChanged: (val) {
-                              setState(() => telephone = val);
+                              setState(() => location = val);
                             },
                           ),
                           SizedBox(
@@ -122,7 +136,7 @@ class _SignUpState extends State<SignUp> {
                             },
                           ),
                           SizedBox(
-                            height: 50.0,
+                            height: 20.0,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -146,7 +160,7 @@ class _SignUpState extends State<SignUp> {
                                 onTap: () {
                                   widget.toggleView();
                                 },
-                              )
+                              ),
                             ],
                           ),
                         ],
