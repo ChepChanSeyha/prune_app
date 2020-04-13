@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:prune_app/shared/onboarding.dart';
-import 'package:prune_app/shared/overboarding.dart';
 import 'models/user.dart';
 import 'screens/home/splashscreen.dart';
 import 'services/auth.dart';
@@ -21,10 +19,6 @@ class MyApp extends StatelessWidget {
         title: 'Prune',
         debugShowCheckedModeBanner: false,
         home: MySplashScreen(),
-<<<<<<< HEAD
-//        home: OnBoardingPage(),
-=======
->>>>>>> parent of 594a5059... delete dara project
       ),
     );
   }
