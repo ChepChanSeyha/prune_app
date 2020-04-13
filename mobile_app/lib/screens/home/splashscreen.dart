@@ -14,8 +14,8 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return SplashScreen(
         seconds: 5,
-//        navigateAfterSeconds: Wrapper(),
-        navigateAfterSeconds: OnBoardingPage(),
+        navigateAfterSeconds: Wrapper(),
+//        navigateAfterSeconds: OnBoardingPage(),
         backgroundColor: Colors.transparent,
         imageBackground: AssetImage('assets/images/background.jpg'),
         photoSize: 100.0,
