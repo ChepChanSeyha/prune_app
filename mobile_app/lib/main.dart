@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'Prune',
         debugShowCheckedModeBanner: false,
         home: MySplashScreen(),
+//        home: OnBoardingPage(),
       ),
     );
   }
