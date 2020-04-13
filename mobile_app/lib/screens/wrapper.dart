@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:prune_app/shared/onboarding.dart';
 
 import '../models/user.dart';
 import 'authenticate/authenticate.dart';
@@ -14,7 +13,7 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
     
     if(user == null) {
-      return OnBoardingPage();
+      return Authenticate();
     } else {
       return NavigationTabBar();
     }

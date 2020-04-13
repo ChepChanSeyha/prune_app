@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'loading.dart';
+import '../../shared/loading.dart';
 import 'charts.dart';
 
 class Profile extends StatefulWidget {

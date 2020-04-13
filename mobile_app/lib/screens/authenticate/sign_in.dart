@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:prune_app/screens/home/home.dart';
-import 'package:prune_app/screens/home/loading.dart';
 import 'package:prune_app/services/auth.dart';
+import 'package:prune_app/shared/loading.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -15,40 +12,12 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   final AuthService _auth = AuthService();
-  final _loginFormKey = GlobalKey<FormState>();
-  TextEditingController emailInputController;
-  TextEditingController pwdInputController;
+  final _formKey = GlobalKey<FormState>();
 
-  // Text field state
+// Text field state
   String email = '';
   String password = '';
   String error = '';
-
-  @override
-  initState() {
-    emailInputController = new TextEditingController();
-    pwdInputController = new TextEditingController();
-    super.initState();
-  }
-
-  String emailValidator(String value) {
-    Pattern pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
-    if (!regex.hasMatch(value)) {
-      return 'Email format is invalid';
-    } else {
-      return null;
-    }
-  }
-
-  String pwdValidator(String value) {
-    if (value.length < 8) {
-      return 'Password must be longer than 8 characters';
-    } else {
-      return null;
-    }
-  }
 
   bool _obscureText = true;
   bool loading = false;
@@ -64,17 +33,17 @@ class _SignInState extends State<SignIn> {
                   padding:
                       EdgeInsets.symmetric(vertical: 70.0, horizontal: 30.0),
                   child: Form(
-                      key: _loginFormKey,
+                      key: _formKey,
                       child: Column(
                         children: <Widget>[
                           Image.asset(
-                            'assets/images/icon2.png',
-                            height: MediaQuery.of(context).size.width * 0.4,
-                            width: MediaQuery.of(context).size.width * 0.4,
+                            'assets/images/icon.png',
+                            height: MediaQuery.of(context).size.width * 0.5,
+                            width: MediaQuery.of(context).size.width * 0.5,
                             scale: 1.0,
                           ),
                           SizedBox(
-                            height: 20.0,
+                            height: 50.0,
                           ),
                           TextFormField(
                             validator: (val) =>
@@ -86,6 +55,9 @@ class _SignInState extends State<SignIn> {
                             onChanged: (val) {
                               setState(() => email = val);
                             },
+                          ),
+                          SizedBox(
+                            height: 20.0,
                           ),
                           TextFormField(
                             validator: (val) =>
@@ -117,16 +89,17 @@ class _SignInState extends State<SignIn> {
                             height: 20.0,
                           ),
                           RaisedButton(
-                            color: Color(0xff5BBDF4),
+                            color: Color(0xffE91403),
                             child: Text(
                               'Sign In',
                               style: TextStyle(color: Colors.white),
                             ),
                             onPressed: () async {
-                              if (_loginFormKey.currentState.validate()) {
+                              if (_formKey.currentState.validate()) {
                                 setState(() => loading = true);
-                                dynamic result = await _auth
-                                    .signInWithEmailAndPassword(email, password);
+                                dynamic result =
+                                    await _auth.signInWithEmailAndPassword(
+                                        email, password);
                                 if (result == null) {
                                   setState(() {
                                     error = 'Invalid email or password';
@@ -137,7 +110,7 @@ class _SignInState extends State<SignIn> {
                             },
                           ),
                           SizedBox(
-                            height: 20.0,
+                            height: 50.0,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -149,9 +122,9 @@ class _SignInState extends State<SignIn> {
                               GestureDetector(
                                 child: Row(
                                   children: <Widget>[
-                                    Text('Register',
+                                    Text('Sign Up',
                                         style: TextStyle(
-                                          color: Colors.red,
+                                          color: Color(0xffE91403),
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           decoration: TextDecoration.underline,
@@ -161,18 +134,9 @@ class _SignInState extends State<SignIn> {
                                 onTap: () {
                                   widget.toggleView();
                                 },
-                              ),
+                              )
                             ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            'Register later',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                decoration: TextDecoration.underline),
-                          ),
+                          )
                         ],
                       ))),
             ),

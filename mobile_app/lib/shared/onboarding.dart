@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:prune_app/screens/authenticate/sign_in.dart';
-import 'package:prune_app/screens/wrapper.dart';
 
 class OnBoardingPage extends StatefulWidget {
   OnBoardingPage({Key key}) : super(key: key);
@@ -22,7 +21,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       height: isCurrentPage ? 11.0 : 7.0,
       width: isCurrentPage ? 11.0 : 7.0,
       decoration: BoxDecoration(
-        color: isCurrentPage ? Colors.red : Colors.red[200],
+        color: isCurrentPage ? Colors.red  : Colors.red[300],
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -44,109 +43,95 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               _buildPageContent(
                   image: 'assets/images/icon.png',
                   body:
-                      'Lorem dolor sit amet consecteur adipiscing elit sed do eiusmod tempor incididunt ut ero labor et dolor'),
+                  'Lorem dolor sit amet consecteur adipiscing elit sed do eiusmod tempor incididunt ut ero labor et dolor'),
               _buildPageContent(
                   image: 'assets/images/icon.png',
                   body:
-                      'Lorem dolor sit amet consecteur adipiscing elit sed do eiusmod tempor incididunt ut ero labor et dolor'),
+                  'Lorem dolor sit amet consecteur adipiscing elit sed do eiusmod tempor incididunt ut ero labor et dolor'),
               _buildPageContent(
                   image: 'assets/images/icon.png',
                   body:
-                      'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque.'),
+                  'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque.'),
               _buildPageContent(
                   image: 'assets/images/icon.png',
                   body:
-                      'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque.')
+                  'Donec facilisis tortor ut augue lacinia, at viverra est semper. Sed sapien metus, scelerisque nec pharetra id, tempor a tortor. Pellentesque non dignissim neque.')
             ],
           ),
         ),
       ),
       bottomSheet: _currentPage != 3
           ? Container(
-              color: Colors.white,
-              height: MediaQuery.of(context).size.height / 10,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  FlatButton(
-                    onPressed: () {
-                      _pageController.animateToPage(_totalPages,
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.linear);
-                      setState(() {});
-                    },
-                    splashColor: Colors.blue[50],
-                    child: Text(
-                      'SKIP',
-                      style: TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    child: Row(children: [
-                      for (int i = 0; i < _totalPages; i++)
-                        i == _currentPage
-                            ? _buildPageIndicator(true)
-                            : _buildPageIndicator(false)
-                    ]),
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      _pageController.animateToPage(_currentPage + 1,
-                          duration: Duration(milliseconds: 300),
-                          curve: Curves.linear);
-                      setState(() {});
-                    },
-                    splashColor: Colors.blue[50],
-                    child: Text(
-                      'NEXT',
-                      style: TextStyle(
-                          color: Colors.red, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
-            )
-          : GestureDetector(
-              onTap: () => {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => SignIn()))
+        height: MediaQuery.of(context).size.height/12,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            FlatButton(
+              onPressed: () {
+                _pageController.animateToPage(_totalPages, duration: Duration(milliseconds: 400), curve: Curves.linear);
+                setState(() {});
               },
-              child: Container(
-                height: Platform.isIOS ? 70 : 60,
-                color: Colors.red,
-                alignment: Alignment.center,
-                child: Text(
-                  'GET STARTED NOW',
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.w600),
-                ),
+              splashColor: Colors.red[50],
+              child: Text(
+                'SKIP',
+                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
               ),
             ),
+            Container(
+              child: Row(children: [
+                for (int i = 0; i < _totalPages; i++) i == _currentPage ? _buildPageIndicator(true) : _buildPageIndicator(false)
+              ]),
+            ),
+            FlatButton(
+              onPressed: () {
+                _pageController.animateToPage(_currentPage + 1, duration: Duration(milliseconds: 400), curve: Curves.linear);
+                setState(() {});
+              },
+              child: Text(
+                'NEXT',
+                style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        ),
+      )
+          : GestureDetector(
+        onTap: () => {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => SignIn()))
+        },
+        child: Container(
+          height: Platform.isIOS ? 70 : 60,
+          color: Colors.blue,
+          alignment: Alignment.center,
+          child: Text(
+            'GET STARTED NOW',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
     );
   }
 
   Widget _buildPageContent({
     String image,
+    String title,
     String body,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30),
+      padding: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Center(
-            child: Image.asset(
-              image,
-              width: MediaQuery.of(context).size.width * 0.7,
-            ),
+            child: Image.asset(image, width: MediaQuery.of(context).size.height/3,),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 40),
           Text(
             body,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12, height: 2.0),
+            style: TextStyle(fontSize: 14, height: 1.5),
           ),
         ],
       ),
