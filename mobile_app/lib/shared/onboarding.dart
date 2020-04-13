@@ -1,7 +1,7 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:prune_app/screens/authenticate/sign_in.dart';
-import 'package:prune_app/screens/wrapper.dart';
 
 class OnBoardingPage extends StatefulWidget {
   OnBoardingPage({Key key}) : super(key: key);
@@ -98,7 +98,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           : GestureDetector(
         onTap: () => {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Wrapper()))
+                context, MaterialPageRoute(builder: (context) => SignIn()))
         },
         child: Container(
           height: Platform.isIOS ? 70 : 60,

@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
         title: 'Prune',
         debugShowCheckedModeBanner: false,
         home: MySplashScreen(),
+<<<<<<< HEAD
 //        home: OnBoardingPage(),
+=======
+>>>>>>> parent of 594a5059... delete dara project
       ),
     );
   }
