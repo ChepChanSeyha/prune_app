@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:prune_app/screens/home/view.dart';
-import 'package:prune_app/screens/test/Test.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ViewListScreen extends StatefulWidget {
@@ -129,13 +128,7 @@ Widget ItemListView (_controller, BuildContext context) {
           height: 50.0,
           buttonColor: Colors.red,
           child: RaisedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  CupertinoPageRoute(builder: (context) => Test()
-                  )
-              );
-            },
+            onPressed: () {},
             child: Text("TEST",style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
