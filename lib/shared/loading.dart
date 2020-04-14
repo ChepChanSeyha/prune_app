@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
@@ -13,7 +14,7 @@ class _LoadingState extends State<Loading> {
       color: CupertinoColors.white,
       child: Center(
         child: SpinKitChasingDots(
-          color: Color(0xff5BBDF4),
+          color: Colors.red,
           size: 50.0,
         ),
       ),

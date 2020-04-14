@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:prune_app/screens/home/home.dart';
 import 'package:prune_app/services/auth.dart';
 import 'package:prune_app/shared/loading.dart';
 
@@ -15,15 +18,24 @@ class _SignUpState extends State<SignUp> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
-  // Text field state
-  String email = '';
-  String fullName = '';
-  String password = '';
-  String location = '';
-  String error = '';
+  final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
+  TextEditingController fullNameInputController;
+  TextEditingController emailInputController;
+  TextEditingController pwdInputController;
+  TextEditingController locationInputController;
+
+  @override
+  initState() {
+    fullNameInputController = new TextEditingController();
+    emailInputController = new TextEditingController();
+    pwdInputController = new TextEditingController();
+    locationInputController = new TextEditingController();
+    super.initState();
+  }
 
   bool _obscureText = true;
   bool loading = false;
+  String error = '';
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +64,7 @@ class _SignUpState extends State<SignUp> {
                                 val.isEmpty ? 'Enter your email' : null,
                             decoration: InputDecoration(
                                 hintText: 'Email', icon: Icon(Icons.email)),
-                            onChanged: (val) {
-                              setState(() => email = val);
-                            },
+                            controller: emailInputController,
                           ),
                           SizedBox(
                             height: 20.0,
@@ -64,9 +74,7 @@ class _SignUpState extends State<SignUp> {
                             val.isEmpty ? 'Enter your full name' : null,
                             decoration: InputDecoration(
                                 hintText: 'Full name', icon: Icon(Icons.account_circle)),
-                            onChanged: (val) {
-                              setState(() => fullName = val);
-                            },
+                            controller: fullNameInputController,
                           ),
                           SizedBox(
                             height: 20.0,
@@ -93,10 +101,8 @@ class _SignUpState extends State<SignUp> {
                                 ),
                                 hintText: 'Password',
                                 icon: Icon(Icons.vpn_key)),
+                            controller: pwdInputController,
                             obscureText: _obscureText,
-                            onChanged: (val) {
-                              setState(() => password = val);
-                            },
                           ),
                           SizedBox(
                             height: 20.0,
@@ -107,9 +113,7 @@ class _SignUpState extends State<SignUp> {
                             decoration: InputDecoration(
                                 hintText: 'Location',
                                 icon: Icon(Icons.location_on)),
-                            onChanged: (val) {
-                              setState(() => location = val);
-                            },
+                            controller: locationInputController,
                           ),
                           SizedBox(
                             height: 20.0,
@@ -124,8 +128,18 @@ class _SignUpState extends State<SignUp> {
                               if (_formKey.currentState.validate()) {
                                 setState(() => loading = true);
                                 dynamic result =
-                                    await _auth.signUpWithEmailAndPassword(
-                                        email, password);
+                                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                        email: emailInputController.text, password: pwdInputController.text).then((currentUser) => Firestore.instance
+                                        .collection("users")
+                                        .document(currentUser.user.uid)
+                                        .setData({
+                                      "uid": currentUser.user.uid,
+                                      "fullName": fullNameInputController.text,
+                                      "location": locationInputController.text,
+                                    }).then((result) => Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) =>
+                                        Home()), (_) => false),))
+                                        .catchError((err) => print(err))
+                                        .catchError((err) => print(err));;
                                 if (result == null) {
                                   setState(() {
                                     error = 'Something went wrong';

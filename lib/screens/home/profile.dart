@@ -97,7 +97,7 @@ class _ProfileState extends State<Profile> {
                         stream: Firestore.instance.collection('users').snapshots(),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) return Text('Loading ... ');
-                          return Text(snapshot.data.documents[0]['fullname'].toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),);
+                          return Text(snapshot.data.documents[0]['fullName'].toString(), style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),);
                         },
                       ),
                       Text('Phnom Penh, Cambodia'),
