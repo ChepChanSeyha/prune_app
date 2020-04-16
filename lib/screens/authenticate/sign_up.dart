@@ -52,7 +52,7 @@ class _SignUpState extends State<SignUp> {
                       child: Column(
                         children: <Widget>[
                           Image.asset(
-                            'assets/images/icon2.png',
+                            'assets/images/icon.png',
                             height: MediaQuery.of(context).size.width * 0.5,
                             width: MediaQuery.of(context).size.width * 0.5,
                           ),
