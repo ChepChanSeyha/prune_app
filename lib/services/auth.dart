@@ -11,8 +11,9 @@ class AuthService {
     return user != null ? User(id: user.uid) : null;
   }
 
-  Future getCurrentUser() async {
-    return await _auth.currentUser();
+  Future<FirebaseUser> getCurrentUser() async {
+    FirebaseUser user = await _auth.currentUser();
+    return user;
   }
 
   // auth change user stream

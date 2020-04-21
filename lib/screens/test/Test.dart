@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class Test extends StatefulWidget {
   @override
@@ -9,10 +10,16 @@ class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Test'),
+      backgroundColor: Colors.white,
+      appBar: CupertinoNavigationBar(
+        backgroundColor: CupertinoColors.white,
+        border: Border.all(color: const Color(0xFFFFFFFF)),
+        leading: CupertinoNavigationBarBackButton(
+          color: Colors.red,
+          onPressed: () => Navigator.pop(context),
+        ),
       ),
+//        title: Text('Test'),
       body: ListView(
         children: <Widget>[
           SizedBox(height: 10,),
@@ -26,7 +33,7 @@ class _TestState extends State<Test> {
           SizedBox(height: 10,),
           Container(
             height: 68,
-            color: Colors.white,
+            color: Colors.red[100],
             child: Center(
               child: Text('A',style:TextStyle(color: Colors.red)),
             ),
@@ -34,7 +41,7 @@ class _TestState extends State<Test> {
           SizedBox(height: 10,),
           Container(
             height: 68,
-            color: Colors.white,
+            color: Colors.red[100],
             child: Center(
               child: Text('B',style:TextStyle(color: Colors.red)),
             ),
@@ -42,7 +49,7 @@ class _TestState extends State<Test> {
           SizedBox(height: 10,),
           Container(
             height: 68,
-            color: Colors.white,
+            color: Colors.red[100],
             child: Center(
               child: Text('C',style:TextStyle(color: Colors.red)),
             ),

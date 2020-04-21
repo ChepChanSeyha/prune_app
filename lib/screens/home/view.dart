@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:prune_app/screens/home/viewlist.dart';
 import 'package:prune_app/screens/test/Test.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -13,10 +14,10 @@ class _ViewScreenState extends State<ViewScreen> {
   @override
   void initState(){
     _controller = YoutubePlayerController(
-      initialVideoId: 'zmBvPcEjetA',
+      initialVideoId: 'cWZDLHUK3x0',
       flags: YoutubePlayerFlags(
         mute: false,
-        autoPlay:false,
+        autoPlay:true,
       ),
     );
     super.initState();
@@ -29,6 +30,7 @@ class _ViewScreenState extends State<ViewScreen> {
           backgroundColor: CupertinoColors.white,
           border: Border.all(color: const Color(0xFFFFFFFF)),
           leading: CupertinoNavigationBarBackButton(
+            color: Colors.red,
             onPressed: () => Navigator.pop(context),
           ),
         ),
@@ -150,7 +152,11 @@ createDialog( BuildContext context){
                 child: RaisedButton(
                 color: Colors.red,
                 onPressed: () {
-                Navigator.of(context).pop();
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(builder: (context) => ViewListScreen()
+                      )
+                  );
               },
                  child: Text(
                  'Okay',

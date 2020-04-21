@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
-import '../wrapper.dart';
+import '../screens/wrapper.dart';
 
 class MySplashScreen extends StatefulWidget {
   @override

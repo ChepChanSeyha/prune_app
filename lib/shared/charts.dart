@@ -25,7 +25,7 @@ class DatumLegendWithMeasures extends StatelessWidget {
         new charts.DatumLegend(
           position: charts.BehaviorPosition.start,
           horizontalFirst: false,
-          cellPadding: new EdgeInsets.only(bottom: 10.0),
+          cellPadding: new EdgeInsets.only(bottom: 10.0, left: 20),
           showMeasures: true,
           legendDefaultMeasure: charts.LegendDefaultMeasure.firstValue,
           measureFormatter: (num value) {
@@ -38,12 +38,12 @@ class DatumLegendWithMeasures extends StatelessWidget {
 
   static List<charts.Series<LearningHistory, String>> _createSampleData() {
     final data = [
-      new LearningHistory('Math', 23),
-      new LearningHistory('Japanese', 18),
-      new LearningHistory('English', 9),
-      new LearningHistory('Geography', 15),
-      new LearningHistory('Science', 5),
-      new LearningHistory('OTHER', 30),
+      new LearningHistory('Math', 23, charts.MaterialPalette.red.shadeDefault),
+      new LearningHistory('Japanese', 18, charts.MaterialPalette.red.shadeDefault),
+      new LearningHistory('English', 9, charts.MaterialPalette.red.shadeDefault),
+      new LearningHistory('Geography', 15, charts.MaterialPalette.red.shadeDefault),
+      new LearningHistory('Science', 5, charts.MaterialPalette.red.shadeDefault),
+      new LearningHistory('OTHER', 30, charts.MaterialPalette.red.shadeDefault),
     ];
 
     return [
@@ -51,6 +51,7 @@ class DatumLegendWithMeasures extends StatelessWidget {
         id: 'LearningHistory',
         domainFn: (LearningHistory subjects, _) => subjects.subjects,
         measureFn: (LearningHistory percentages, _) => percentages.percentages,
+        colorFn: (LearningHistory color, _) => color.color,
         data: data,
       )
     ];
@@ -61,6 +62,7 @@ class DatumLegendWithMeasures extends StatelessWidget {
 class LearningHistory {
   final String subjects;
   final int percentages;
+  final charts.Color color;
 
-  LearningHistory(this.subjects, this.percentages);
+  LearningHistory(this.subjects, this.percentages, this.color);
 }

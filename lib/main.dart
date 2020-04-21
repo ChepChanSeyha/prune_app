@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/user.dart';
-import 'screens/home/splashscreen.dart';
+import 'shared/splashscreen.dart';
 import 'services/auth.dart';
 
 void main() => runApp(MyApp());
